@@ -78,7 +78,7 @@ There are too many social media platforms!
 But how do we solve that problem without creating a new one (and avoid becoming the punchline in an XKCD comic)? 
 By building on the largest social network in the world: the world wide web (of websites).
 
-<mark>The SocialSpec API project is a _documentation_ project.</mark>
+<mark>The SocialSpec API project is a _documentation_ initiative.</mark>
 Each SocialSpec API documents one missing building block around RSS feeds: @followspec.org, @aboutspec.org, and @contactspec.org. 
 These building blocks restore some of the missing infrastructure needed to create compelling new social media experiences based on open standards. 
 If SocialSpec is successful, it won't be because we created something new. 
