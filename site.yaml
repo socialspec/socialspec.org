@@ -38,10 +38,6 @@ feeds:
             - created_at: desc
 
 config:
-    preview:
-        id: socialspec-local
-        bind: localhost
-        port: 4173
     themes_dir: themes
     theme: themes/socialspec/theme.json
     feed_format: rss
