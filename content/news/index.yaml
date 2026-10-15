@@ -2,8 +2,9 @@
 layout: blog
 visibility: unlisted
 created_at: 2026-10-13T08:00:00-07:00
-title: News
-description: Draft updates, implementation notes, and RFC summaries.
+title: SocialSpec.org News
+description: |
+  All the latest news about @socialspec.org, including app spotlights and more.
 feeds:
   news:
     source: news
@@ -25,8 +26,8 @@ news:
       href: /tags/announcement/
       active: false
       color: none
-    # - label: Apps
-    #   tag: apps
-    #   href: /tags/apps/
-    #   active: false
-    #   color: none
+    - label: Apps
+      tag: apps
+      href: /tags/apps/
+      active: false
+      color: none

@@ -1,122 +1,128 @@
 <!DOCTYPE html>
 <html lang='en'>
-<head>
-    <meta ht-include='fragments/head'>
-    <meta name='layout:name' content='post'>
-    <style ht-pipe='from "style.component" as css' id='components'></style>
-    <style id='layout'>
-        .post-hero {
-            background: var(--color-ink);
-            color: var(--color-white);
-        }
+    <head>
+        <meta ht-include='fragments/head'>
+        <meta name='layout:name' content='post'>
+        <style ht-pipe='from "style.component" as css' id='components'></style>
+        <style id='layout'>
+            .post-hero {
+                background: var(--color-ink);
+                color: var(--color-white);
+            }
 
-        .post-hero>content-container {
-            display: grid;
-            gap: 22px;
-            padding-block: 52px 60px;
-        }
-
-        .post-hero .all-posts {
-            width: max-content;
-            color: #d3d7e0;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .post-hero .all-posts:hover {
-            color: var(--color-white);
-        }
-
-        .post-hero h1 {
-            max-width: 920px;
-            color: var(--color-white);
-            overflow-wrap: anywhere;
-        }
-
-        .post-hero .post-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px 16px;
-            color: #b7bdcb;
-            font: 500 .8125rem var(--font-mono);
-        }
-
-        article {
-            display: block;
-            box-sizing: border-box;
-            justify-content: center;
-            width: auto;
-            max-width: 100%;
-            margin: 0;
-            padding: var(--whitespace) var(--container-gutter);
-        }
-
-        article> :first-child {
-            color: var(--color-ink);
-            line-height: 1.6;
-        }
-
-        article figure {
-            display: grid;
-            grid-template-columns: 1fr;
-            width: 100%;
-            margin: var(--gutter-2x) 0;
-            gap: var(--gutter-2x);
-        }
-        article figure :is(img, video, figcaption) {
-            margin: 0 auto;
-        }
-        article figure figcaption {
-            font-size: 0.75em;
-        }
-
-        @media (max-width: 720px) {
             .post-hero>content-container {
-                padding-block: 36px 44px;
+                display: grid;
+                gap: 22px;
+                padding-block: 52px 60px;
+            }
+
+            .post-hero .all-posts {
+                width: max-content;
+                color: #d3d7e0;
+                font-weight: 600;
+                text-decoration: none;
+            }
+
+            .post-hero .all-posts:hover {
+                color: var(--color-white);
+            }
+
+            .post-hero h1 {
+                max-width: 920px;
+                color: var(--color-white);
+                overflow-wrap: anywhere;
+            }
+
+            .post-hero .post-meta {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px 16px;
+                color: #b7bdcb;
+                font: 500 .8125rem var(--font-mono);
             }
 
             article {
-                padding-block: 40px 56px;
+                display: block;
+                box-sizing: border-box;
+                justify-content: center;
+                width: auto;
+                max-width: 100%;
+                margin: 0;
+                padding: var(--whitespace) var(--container-gutter);
             }
 
-        }
-    </style>
-</head>
+            article> :first-child {
+                color: var(--color-ink);
+                line-height: 1.6;
+            }
 
-<body class='post-page'>
-    <header>
-        <nav ht-include='fragments/nav' data-color-scheme='dark'></nav>
-        <section class='post-hero' data-color-scheme='dark'>
-            <content-container>
-                <a class='all-posts' href='/news/'>
-                    ← All news
-                </a>
-                <h1 ht-apply>
-                    ${ page.title }
-                </h1>
-                <p ht-apply>
-                    ${ page.description }
-                </p>
-                <div class='post-meta'>
-                    <time ht-apply datetime='${ page.created_at }'>${ page.date }</time>
-                    <span aria-hidden='true'>·</span>
-                    <span ht-apply>${ reading_time(page.wordcount) }</span>
-                    <span aria-hidden='true'>·</span>
-                    <a ht-apply ht-if='${ page.byline.href }' href='${ page.byline.href }'>
-                        <span ht-apply>by ${ page.byline.username, page.byline.name, site.byline.username, site.byline.name }</span>
+            article figure {
+                display: grid;
+                grid-template-columns: 1fr;
+                width: 100%;
+                margin: var(--gutter-2x) auto;
+                gap: var(--gutter-2x);
+            }
+            article figure[small] { width: 50%; }
+            article figure[medium] { width: 75%; }
+            article figure :is(img, video, figcaption) {
+                margin: 0 auto;
+            }
+            article figure figcaption {
+                font-size: 0.75em;
+            }
+
+            @media (max-width: 720px) {
+                .post-hero>content-container {
+                    padding-block: 36px 44px;
+                }
+
+                article {
+                    padding-block: 40px 56px;
+                }
+
+            }
+        </style>
+        <style ht-if='${ page.code.linenumbers } != true'>
+            .post-content .chroma .ln {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body class='post-page'>
+        <header>
+            <nav ht-include='fragments/nav' data-color-scheme='dark'></nav>
+            <section class='post-hero' data-color-scheme='dark'>
+                <content-container>
+                    <a class='all-posts' href='/news/'>
+                        ← All news
                     </a>
-                    <span ht-apply ht-if='!${ page.byline.href }'>by ${ page.byline.username, page.byline.name, site.byline.username, site.byline.name }</span>
-                </div>
-            </content-container>
-        </section>
-    </header>
-    <main>
-        <article ht-apply class='post-content' data-color-scheme='light'>
-            ${ markdown(page.content) }
-        </article>
-        <section ht-include='fragments/open-source' data-color-scheme='smoke'></section>
-    </main>
-    <footer ht-include='fragments/footer'></footer>
-</body>
-
+                    <h1 ht-apply>
+                        ${ page.title }
+                    </h1>
+                    <p ht-apply>
+                        ${ markdown(page.description) }
+                    </p>
+                    <div class='post-meta'>
+                        <time ht-apply datetime='${ page.created_at }'>${ page.date }</time>
+                        <span aria-hidden='true'>·</span>
+                        <span ht-apply>${ reading_time(page.wordcount) }</span>
+                        <span aria-hidden='true'>·</span>
+                        <a ht-apply ht-if='${ page.byline.href }' href='${ page.byline.href }'>
+                            <span ht-apply>by ${ page.byline.username, page.byline.name, site.byline.username, site.byline.name }</span>
+                        </a>
+                        <span ht-apply ht-if='!${ page.byline.href }'>by ${ page.byline.username, page.byline.name, site.byline.username, site.byline.name }</span>
+                    </div>
+                </content-container>
+            </section>
+        </header>
+        <main>
+            <article ht-apply class='post-content' data-color-scheme='light'>
+                ${ markdown(page.content) }
+            </article>
+            <section ht-include='fragments/open-source' data-color-scheme='smoke'></section>
+        </main>
+        <footer ht-include='fragments/footer'></footer>
+    </body>
 </html>

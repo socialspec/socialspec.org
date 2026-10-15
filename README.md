@@ -32,7 +32,7 @@ Please visit https://hypertexting.dev to learn more.
     The best way to help contribute to [socialspec.org] is to implement support for one or more of the APIs. 
     
     * Do you have a personal or business website?
-    * Do you work at a company that is building a content management system (CMS) like Wordpress?
+    * Do you work at a company that is building a content management system (CMS) like WordPress?
     * Do you work on an RSS feed reader?
     
     Add support for [followspec.org], [aboutspec.org], and/or [contactspec.org]! 🙌
