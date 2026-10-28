@@ -6,7 +6,7 @@
 
 There are currently three APIs:
 
-* https://followingspec.org (`/.well-known/following.opml`)
+* https://followspec.org (`/.well-known/following.opml`)
 * https://aboutspec.org (`/.well-known/about.md`)
 * https://contactspec.org (`/.well-known/contact.vcf`)
 
